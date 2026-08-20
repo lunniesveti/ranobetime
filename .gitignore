@@ -1,0 +1,40 @@
+# --- Python / Django ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*/venv/
+env/
+db.sqlite3
+db.sqlite3-journal
+media/
+*/media/
+staticfiles/
+.ipynb_checkpoints/
+
+# --- Large binaries (too big / not for source control) ---
+*.mp4
+*.mov
+*.zip
+*.7z
+*.rar
+*.xlsx
+*.dat
+
+# --- Nested / build junk ---
+ranobe/ranobe2/venv/
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+~$*
+.vscode/
+.idea/
+
+# renamed nested git history (kept locally, not tracked)
+_git_backup/
+ranobe/ranobe2/_git_backup/
+
+# archived duplicates / prototypes / videos (kept locally, not on GitHub)
+archive/
+from Eyyub/

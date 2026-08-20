@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="html" data-theme="light" lang="en" style="--vh-offset: 0px;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RanobeTime: Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../static/css/readingpage.css">
+    <link rel="stylesheet" href="../static/css/navibar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/dropdown.js"></script>
+    <script src="..-/static/js/carousel.js"></script>
+
+
+    <header>
+
+        <div class="navbar" id="navbar">
+
+            <div class="header-item home">
+                <a href="{% url 'mainpage' %}" class="logo">
+                    <div class="home-logo">
+                        <div class="home-logo-top">
+                            Ranobe
+                            <b>Time</b>
+                        </div>
+                        <div class="home-logo-bottom">Read your novels here</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="header-item menu">
+                <div class="menu-item dropdown">
+                    <div class="header-button-icon">
+                        <button class="dropbtn" id="dropdown1"><i class="fa fa-bars"></i><b>Menu</b></button>
+                        <div class="dropdown-menu1" id="dropdown-content1">
+                            <div class="dropdown-content">
+                                <div class="column side1">
+                                    <div class="content">
+                                        <a href="{% url 'catalogue' %}" class="dropdown-item"><i
+                                                class="fa-solid fa-book-open"></i>Catalogue</a>
+                                        <a href="navbar/updates.html" class="dropdown-item"><i
+                                                class="fa-solid fa-bell"></i>Updates</a>
+                                        <a href="navbar/translators.html" class="dropdown-item"><i
+                                                class="fa-solid fa-globe"></i>Translators</a>
+                                        <a href="navbar/authors.html" class="dropdown-item"><i
+                                                class="fa-solid fa-feather"></i>Authors</a>
+                                        <a href="navbar/publishers.html" class="dropdown-item"><i
+                                                class="fa-solid fa-home"></i>Publishers</a>
+                                        <a href="navbar/collections.html" class="dropdown-item"><i
+                                                class="fa-solid fa-star"></i>Collections</a>
+                                        <a href="navbar/genres.html" class="dropdown-item"><i
+                                                class="fa-solid fa-film"></i>Genres</a>
+                                        <a href="navbar/tags.html" class="dropdown-item"><i
+                                                class="fa-solid fa-tags"></i>Tags</a>
+                                    </div>
+                                </div>
+                                <div class="column side2">
+                                    <div class="nav-side2">Choose Category</div>
+                                    <div class="content">
+                                        <a href="catalogue.html" class="dropdown-item">Japan</a>
+                                        <a href="catalogue.html" class="dropdown-item">Korea</a>
+                                        <a href="catalogue.html" class="dropdown-item">China</a>
+                                        <a href="catalogue.html" class="dropdown-item">English</a>
+                                        <a href="catalogue.html" class="dropdown-item">Author's</a>
+                                        <a href="catalogue.html" class="dropdown-item">Fanfiction</a>
+                                    </div>
+                                    <div class="button-all">
+                                        <a href="catalogue.html" class="dropdown-item"><i class="fa fa-gift"></i>All</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-item search">
+                <search-suggestion class="header-suggestion" min-symbol="3">
+                    <div class="header-search" data-target="search-suggestion.wrapper">
+                        <form id="searchForm" onsubmit="handleSearch(event)" action="/suggestions" method="get"
+                            class="w-100" data-target="search-suggestion.form">
+                            <input type="hidden" name="type" value="novel" data-target="search-suggestion.typeStore">
+                            <div class="header-search-wrapper">
+                                <div class="header-search-form">
+                                    <input type="text" name="query" placeholder="Search...">
+                                    <button class="submit" type="submit">
+                                        <i class="fa fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </search-suggestion>
+            </div>
+
+            <div class="header-item right-menu">
+
+                <div class="right-menu-icons-item dropdown">
+                    <div class="header-button-icon">
+                        <a class="right-menu-icons" href="#"><i class="fa-solid fa-bell"></i></a>
+                    </div>
+                </div>
+
+                <div class="right-menu-icons-item">
+                    <div class="header-button-icon">
+                        <a class="right-menu-icons" href="userprofile.html"><i class="fa-solid fa-bookmark"></i></a>
+                    </div>
+                </div>
+
+                <div class="right-menu-icons-item dropdown">
+                    <div class="header-button-icon">
+                        <button class="dropbtn" id="dropdown2"><i class="fa fa-user"></i></button>
+                        <div class="dropdown-menu2" id="dropdown-content2">
+                            <div class="dropdown-content">
+                                <div class="column">
+                                    <div class="content">
+                                        <a href="userprofile.html" class="dropdown-item">My Profile</a>
+                                        <a href="messages.html" class="dropdown-item"><i
+                                                class="fa-regular fa-envelope"></i>Messages</a>
+                                        <a href="comments.html" class="dropdown-item"><i
+                                                class="fa-regular fa-comment-dots"></i>My
+                                            Comments</a>
+                                        <a href="friends.html" class="dropdown-item"><i
+                                                class="fa-solid fa-user-group"></i>Friends</a>
+                                        <a href="settings.html" class="dropdown-item"><i
+                                                class="fa-solid fa-gear"></i>Settings</a>
+                                        <a href="#" class="dropdown-item"><i
+                                                class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <div class="carousel">
+        <!-- Carousel daxili konteyneri butun itemlerler -->
+        <div class="carousel-inner">
+            <!-- karuselin icindeki itemler -->
+            <div class="carousel-item">
+                <img src="../images/carousel/img1.jpg" alt="Featured Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="../images/carousel/img2.jpg" alt="Featured Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="../images/carousel/img3.jpg" alt="Featured Image 3">
+            </div>
+            <div class="carousel-item">
+                <img src="../images/carousel/img4.jpg" alt="Featured Image 4">
+            </div>
+            <div class="carousel-item">
+                <img src="../images/carousel/img5.jpg" alt="Featured Image 5">
+            </div>
+            <!-- elave itemler ucun yer -->
+        </div>
+
+        <!-- Carousel idaresi -->
+        <a class="carousel-control-prev" href="#!" role="button">
+            <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#!" role="button">
+            <span class="carousel-control-next-icon" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <main>
+
+        <div class="yuxarihisse">
+
+            <div class="cover-item">
+                <img src="../images/The King Tomb Raider.jpg" alt="Book Cover">
+                <a href="chapter.html">
+                    <h3>Start to Read</h3>
+                </a>
+                <h3>In Bookmarks</h3>
+            </div>
+
+            <div class="melumatyan">
+
+                <div class="noveltitle">
+                    <h2>The King Tomb Raider (Novel)</h2>
+                </div>
+
+                <div class="rating">
+
+                    <div class="rating-item">
+                        <h4>Views</h4>
+                        <div class="rating-data">
+                            <div class="icon"><i class="fa-solid fa-eye"></i></div>
+                            <div class="reqem">2.87K</div>
+                        </div>
+                    </div>
+
+                    <div class="rating-item">
+                        <h4>Bookmarks</h4>
+                        <div class="rating-data">
+                            <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                            <div class="reqem">301</div>
+                        </div>
+                    </div>
+
+                    <div class="rating-item">
+                        <h4>Likes</h4>
+                        <div class="rating-data">
+                            <div class="icon"><i class="fa-solid fa-heart"></i></div>
+                            <div class="reqem">75</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                    incididunt ut labore et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex
+                    ea commodo consequat.</p>
+
+            </div>
+
+            </div>
+
+            <div class="ortahisse">
+
+                <div class="melumatasagi">
+
+                    <h4>Type:</h4>
+                    <h3>Korean</h3>
+                    <h4>Author:</h4>
+                    <h3>Shing-Shong</h3>
+                    <h4>Year of Relise:</h4>
+                    <h3>2018</h3>
+                    <h4>Status of Title:</h4>
+                    <h3>Finished</h3>
+                    <h4>Status of Translate:</h4>
+                    <h3>Ongoing</h3>
+
+                </div>
+
+                <div class="chaptersection">
+
+                    <h2>Chapters</h2>
+                    <div class="container-chapters">
+
+                        <ul class="chapters-list">
+
+                            <li class="chapter">
+                                <div class="birinci-sira">
+                                    <a href="chapter.html">
+                                        <p>Chapter 8</p>
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li class="chapter">
+                                <a href="chapter.html">
+                                    <p>Chapter 7</p>
+                                </a>
+                            </li>
+
+                            <li class="chapter">
+                                <a href="chapter.html">
+                                    <p>Chapter 5</p>
+                                </a>
+                            </li>
+
+                            <li class="chapter">
+                                <a href="chapter.html">
+                                    <p>Chapter 4</p>
+                                </a>
+                            </li>
+
+                            <li class="chapter">
+                                <a href="chapter.html">
+                                    <p>Chapter 3</p>
+                                </a>
+                            </li>
+
+                            <li class="chapter">
+                                <a href="chapter.html">
+                                    <p>Chapter 2</p>
+                                </a>
+                            </li>
+
+                            <li class="chapter-last">
+                                <a href="chapter.html">
+                                    <p>Chapter 1</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="asagihisse">
+
+                <section class="advertisement">
+                    <h1>Burada sizin reklam ola bilər</h1>
+                </section>
+
+                <div class="commentsection">
+
+                    <h2>Comments</h2>
+                    <div class="container-chapters">
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="footer/privacypolicy.html">Privacy Policy</a></li>
+                    <li><a href="footer/faq.html">FAQ</a></li>
+                    <li><a href="footer/termsofuse.html">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Our Creators</h3>
+                <ul>
+                    <li><a href="footer/eyyubbio.html">Əyyub Məmmədov</a></li>
+                    <li><a href="footer/tahirebio.html">Tahirə Rəşid</a></li>
+                    <li><a href="footer/eltonbio.html">Elton Rüstəmov</a></li>
+                    <li><a href="footer/feridbio.html">Fərid Nəcəfov</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>We in Social Media</h3>
+                <ul class="social-media-links">
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:xxxxxxx@gmail.com">xxxxxxx@gmail.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

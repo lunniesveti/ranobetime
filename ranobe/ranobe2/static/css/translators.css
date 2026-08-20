@@ -1,0 +1,215 @@
+* {box-sizing:border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-color: #f2f2f3;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  font-family: -apple-system,BlinkMacSystemFont,Open Sans,Roboto,Helvetica Neue,Helvetica,sans-serif;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+/* START - The all page */
+
+
+.page{
+  padding-top: 60px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 100%;
+}
+.page_inner{
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+.page_container{
+  max-width: 1400px;
+  margin: 17px 30px;
+  padding: 0 20px;
+  /*width: 100%;*/
+}
+.container{
+  position: relative;
+}
+.paper{
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(34, 36, 37, 0.1);
+}
+
+
+/* ITEMS list - START */
+.str-left{
+  float: left;
+  width: 900px;
+}
+
+.translators-number{
+  background-color: #1abb9c;
+  margin-left: 5px;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1;
+  padding: 5px 10px;
+  text-align: center;
+  
+}
+.card-header{
+  justify-content: space-between;
+}
+.card-header .dropdown button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1abb9c;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px;
+  min-width: 70px;
+  min-height: 30px;
+  border-width: 1px;
+  border-radius: 5px;
+}
+.dropdown-menu3{
+  display: none;
+  top: 40px;
+  position: absolute;
+  right: 400px;
+  top: 55px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown-menu3 .column{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  border: none;
+}
+.header-filter{
+  display: flex;
+  flex-direction: column;
+}
+.header-filter .divider{
+  margin: 8px;
+  border-bottom: 1px solid rgba(34,36,38,.1);
+}
+.bookmark-settings__item{
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.control{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+.control__input{
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.control__input:checked~.control__indicator_checkbox, .control__input:checked~.control__indicator_radio{
+  border-color: #1abb9c;
+}.control__input:checked~.control__indicator{
+  background: #1abb9c;
+}
+
+.control__indicator{
+  width: 16px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+}
+.control__indicator_radio{
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 50%;
+}
+.bookmark-settings__group .divider{
+  height: 1px;
+  background: #e5e5e5;
+  margin: 4px 10px 4px 34px;
+}
+.control__text{
+  margin-left: 8px;
+}
+
+.list-item{
+  padding: 16px 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(34,36,38,.1)!important;
+}
+.translators-group-card{
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+.group-image img{
+  border-radius: 50%;
+  font-size: 43px;
+  height: 85px;
+  line-height: 85px;
+  width: 85px;
+  display: flex;
+  flex-shrink: 0;
+}
+.group-profile{
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.group-profile-information{
+  display: flex;
+  flex-direction: column;
+}
+.group-name{
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 5px;
+  text-decoration: none;
+  color: black;
+}
+.group-information{
+  color: #656565;
+  font-size: 13px;
+  margin: 2px 0;
+}
+.group-profile-follow{
+  margin-left: 8px;
+  display: inline-block;
+}
+.follow-button{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e3e4e8;
+  color: black;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: .875rem;
+  line-height: 1.5;
+}
+.follow-button i{
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 7px;
+}

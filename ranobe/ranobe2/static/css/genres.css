@@ -1,0 +1,117 @@
+* {box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+  background-color: #f2f2f3;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  font-family: -apple-system,BlinkMacSystemFont,Open Sans,Roboto,Helvetica Neue,Helvetica,sans-serif;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+/* START - The all page */
+
+.page{
+  padding-top: 60px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 100%;
+}
+.page_inner{
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+.page_container{
+  max-width: 1400px;
+  margin: 17px 30px;
+  padding: 0 20px;
+  /*width: 100%;*/
+}
+.container{
+  position: relative;
+}
+.paper{
+  background: #fff;
+  border-radius: 5px;
+}
+
+/* ITEMS list - START */
+.str-left{
+  float: left;
+  width: 900px;
+}
+.head-buttons{
+  margin: 30px 0;
+  padding: 0 35px;
+  text-align: center;
+}
+.information_tabs{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  border: 1px solid #3b3b3b;
+  border-radius: 15px;
+  height: 100%;
+}
+.information_tabs li{
+  float: left;
+}
+.information_tabs li:first-child a {
+  border-left-width: 0
+}
+.information_tabs li a {
+  border-left: 1px solid #3b3b3b;
+  display: block;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  color: #999;
+  line-height: 20px;
+  padding: 4px 12px;
+}
+.information_tabs .is-active a{
+  color: rgb(0, 0, 0);
+  background-color: #dddddd ;
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.content-divider{
+  margin: 0 10px 20px;
+  height: 1px;
+  background-color: #a9a9a9;
+}
+.items-list{
+  display: block;
+}
+.items-list_genre{
+  display: block;
+  margin: 10px 0 15px;
+  padding: 0 35px;
+}
+
+.items-list_genre a :hover{
+  background-color: #e5e5e5;
+}
+.list-item a{
+  text-decoration: none;  
+}
+.item-container{
+  overflow: hidden;
+  color: black;
+  border-radius: 5px;
+}
+.miniSynopsis{
+  opacity: .7;
+}
+.item-divider{
+  margin: 15px 0;
+  height: 1px;
+  background-color: #a9a9a9;
+}

@@ -1,0 +1,473 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  background-color: #f2f2f3;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  font-family: -apple-system,BlinkMacSystemFont,Open Sans,Roboto,Helvetica Neue,Helvetica,sans-serif;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+/* START - The all page*/
+.container{
+  padding: 0 50px;
+}
+.page{
+  padding-top: 60px;
+  height: 2000px;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+  width: 100%;
+}
+.page_inner{
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+/* START - User information - profile header*/
+.profile-header{
+  width: 1296px;
+  background-color: white;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.profile-header-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  -webkit-box-align: center;
+}
+
+/* user information - image, nickname, rank*/
+
+div#div-form{
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+}
+
+div.active{
+  z-index: 5 !important;
+}
+
+form.active{
+  top: 25% !important;
+}
+
+form.inl0{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  background-color: white;
+  box-shadow: 5px 5px 20px 5px gray;
+  position: fixed;
+  z-index: 10;
+  top: -500px;
+  left: 30%;
+}
+
+label.inl1{
+  margin-top: 65px;
+  width: 120px;
+  height: 120px;
+  position: absolute;
+}
+
+img.form-image{
+  border-radius: 5px;
+  width: 120px;
+  height: 120px;
+}
+
+input.inl2{
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+button.inl3{
+  margin-top: 45%;
+  width: 120px;
+  height: 35px;
+}
+
+.profile-user{
+  display: flex;
+  align-items: center;
+}
+
+/* user avetar, image*/
+.profil-user-avatar{
+  position: relative;
+  margin-right: 15px;
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+}
+.profile-user-avatar-image{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+/* user avetar, image*/
+
+/* user nickname */
+.profile-user-username{
+  font-size: 16px;
+  font-weight: 600;
+}
+.mr-10{
+  margin-right: 10px;
+}
+/* user nickname */
+
+/* user rank */
+.profile-user-rank{
+  font-size: 13px;
+  color: #868e96;
+}
+
+/*Settings button*/
+.button_st{
+  padding: 0px 8px;
+  height: 26px;
+  line-height: 26px;
+  font-size: 13px;
+  border-radius: 3px;
+  font-weight: 400;
+  display: inline-block;
+  font-family: inherit;
+  text-decoration: none;
+  background-color: #e0e1e2;
+  font-family: inherit;
+  font-style: normal;
+  text-align: center;
+}
+.fa-gear{
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+}
+/*Settings button*/
+
+.profile-nav{
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: solid 1px #e5e5e5;
+  font-size: 16px;
+}
+.profile-nav-items{
+  overflow-x: auto;
+}
+.tabs_list{
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.profile-nav-items_link{
+  padding: 12px 5px;
+  margin-right: 16px;
+  position: relative;
+}
+.tabs_item_active {
+  text-decoration: none;
+  color: #212529;
+}
+.tabs_item{
+  display: inline-block;
+  cursor: pointer;
+  color: #818181;
+  text-decoration: none;
+}
+.profile-nav-items :hover{
+  color: #212529;
+}
+.profile-info-button{
+  margin-left: auto;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #868e96;
+}
+/* FINISH - User information - profile header*/
+
+/* START - Bookmark container */
+.bookmark-container{
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+/* Bookmark sidebar */
+.bookmark-sidebar{
+  width: 230px;
+  padding-right: 16px;
+  flex-shrink: 0;
+}
+.bookmark-sidebar__panel{
+  margin-bottom: 6px;
+}
+.bookmark-menu{
+  margin-bottom: 6px;
+  width: 100%;
+  padding: 0;
+}
+.menu_page{
+  margin-right: 30px;
+}
+.menu{
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+}
+.menu_page .menu__item.is-active{
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  background: #fff;
+}
+.bookmark-menu .menu__item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+
+.menu_page .menu__item{
+  margin-bottom: 1px;
+  border-radius: 3px;
+}
+.menu_sm .menu__item{
+  padding: 7px 10px;
+  line-height: 1.4;
+  font-weight: 400;
+  margin: 0;
+  border-radius: 5px;
+}
+.menu__item{
+  font-size: 14px;
+  cursor: pointer;
+}
+.bookmark-menu_name{
+  width: 100%;
+}
+.menu__item .category-count{
+  margin: 0 5px;
+}
+.menu__item .is-active {
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  background: #fff;
+}
+
+.bookmark-settings__group{
+  padding: 4px 0;
+}
+.bookmark-settings__title{
+  font-size: 13px;
+  color: #818181;
+  line-height: 26px;
+  padding: 0 10px;
+}
+.bookmark-settings__item{
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.control{
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+.control__input{
+  visibility: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.control__input:checked~.control__indicator_checkbox, .control__input:checked~.control__indicator_radio{
+  border-color: #09a569;
+}.control__input:checked~.control__indicator{
+  background: #09a569;
+}
+
+.control__indicator{
+  width: 16px;
+  height: 16px;
+  position: relative;
+  cursor: pointer;
+}
+.control__indicator_radio{
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 50%;
+}
+.bookmark-settings__group .divider{
+  height: 1px;
+  background: #e5e5e5;
+  margin: 4px 10px 4px 34px;
+}
+.control__text{
+  margin-left: 8px;
+}
+/* Bookmark sidebar */
+
+/*bookmark-wrapper*/
+.bookmark-wrapper{
+  width: 100%;
+}
+.bookmark-input{
+  margin-bottom: 13px;
+}
+.bookmark-input__filter{
+  height: auto;
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+.form__input{
+  width: 100%;
+  margin: 0;
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 20px;
+  color: #212529;
+  border: 1px solid #dcdcdc;
+}
+input{
+  overflow: visible;
+}
+.bookmark__list{
+  padding: 6px 0;
+  margin-top: 13px;
+  position: relative;
+}
+.paper{
+  background: #fff;
+  border-radius: 4px;
+}
+.bookmark-item{
+  position: relative;
+}
+.bookmark-item__body{
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+}
+.bookmark-item__cover-wrap{
+  position: relative;
+}
+.bookmark-item__cover{
+  position: relative;
+  width: 60px;
+  height: 85px;
+  margin-right: 15px;
+  background-size: cover;
+  background-position: 50%;
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.cover-image{
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.shadow-sm{
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.bookmark-item__content{
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bookmark-item__info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+  padding: 2px 0;
+}
+.line-clamp{
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.bookmark__list a{
+  text-decoration: none;
+}
+.bookmark-item__name{
+  font-size: 15px;
+  font-weight: 600;
+  color: #212529;
+  margin-right: 6px;
+}
+.bookmark-item__alt-name{
+  font-size: 13px;
+  font-weight: 400;
+}
+.text-muted{
+  color: #868e96;
+}
+.bookmark-item__info-subheader{
+  font-size: 13px;
+  margin-top: 5px;
+}
+.bookmark-item__info-subheader a{
+  display: inline-flex;
+  align-items: center;
+}
+.link-default{
+  color: #212529;
+}
+.bookmark-item__footer{
+  margin-top: 5px;
+}
+.bookmark-item__continue{
+  font-size: 13px;
+  cursor: pointer;
+}
+.bookmark-item__meta{
+  display: flex;
+  align-items: center;
+}
+.bookmark-meta-item{
+  font-size: 13px;
+  padding: 0 10px;
+  min-width: 125px;
+}
+.bookmark-meta-item__title{
+  color: #868e96;
+}
+.bookmark-item:after{
+  content: "";
+  display: block;
+  margin: 0 20px 0 88px;
+  height: 1px;
+  background: #e5e5e5;
+}
+/*bookmark-wrapper*/

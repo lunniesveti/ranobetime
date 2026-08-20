@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RanobeTime: Bio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="../static/css/bio.css">
+    <link rel="stylesheet" href="../static/css/navibar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/dropdown.js"></script>
+  
+    <header>
+  
+      <div class="navbar" id="navbar">
+  
+        <div class="header-item home">
+          <a href="../mainpage.html" class="logo">
+            <div class="home-logo">
+              <div class="home-logo-top">
+                Ranobe
+                <b>Time</b>
+              </div>
+              <div class="home-logo-bottom">Read your novels here</div>
+            </div>
+          </a>
+        </div>
+  
+        <div class="header-item menu">
+          <div class="menu-item dropdown">
+            <div class="header-button-icon">
+              <button class="dropbtn" id="dropdown1"><i class="fa fa-bars"></i><b>Menu</b></button>
+              <div class="dropdown-menu1" id="dropdown-content1">
+                <div class="dropdown-content">
+                  <div class="column side1">
+                    <div class="content">
+                      <a href="../catalogue.html" class="dropdown-item"><i class="fa-solid fa-book-open"></i>Catalogue</a>
+                      <a href="../navbar/updates.html" class="dropdown-item"><i class="fa-solid fa-bell"></i>Updates</a>
+                      <a href="../navbar/translators.html" class="dropdown-item"><i class="fa-solid fa-globe"></i>Translators</a>
+                      <a href="../navbar/authors.html" class="dropdown-item"><i class="fa-solid fa-feather"></i>Authors</a>
+                      <a href="../navbar/publishers.html" class="dropdown-item"><i class="fa-solid fa-home"></i>Publishers</a>
+                      <a href="../navbar/collections.html" class="dropdown-item"><i class="fa-solid fa-star"></i>Collections</a>
+                      <a href="../navbar/genres.html" class="dropdown-item"><i class="fa-solid fa-film"></i>Genres</a>
+                      <a href="../navbar/tags.html" class="dropdown-item"><i class="fa-solid fa-tags"></i>Tags</a>
+                    </div>
+                  </div>
+                  <div class="column side2">
+                    <div class="nav-side2">Choose Category</div>
+                    <div class="content">
+                      <a href="../catalogue.html" class="dropdown-item">Japan</a>
+                      <a href="../catalogue.html" class="dropdown-item">Korea</a>
+                      <a href="../catalogue.html" class="dropdown-item">China</a>
+                      <a href="../catalogue.html" class="dropdown-item">English</a>
+                      <a href="../catalogue.html" class="dropdown-item">Author's</a>
+                      <a href="../catalogue.html" class="dropdown-item">Fanfiction</a>
+                    </div>
+                    <div class="button-all">
+                      <a href="../catalogue.html" class="dropdown-item"><i class="fa fa-gift"></i>All</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="header-item search">
+          <search-suggestion class="header-suggestion" min-symbol="3">
+            <div class="header-search" data-target="search-suggestion.wrapper">
+              <form id="searchForm" onsubmit="handleSearch(event)" action="/suggestions" method="get" class="w-100"
+                data-target="search-suggestion.form">
+                <input type="hidden" name="type" value="novel" data-target="search-suggestion.typeStore">
+                <div class="header-search-wrapper">
+                  <div class="header-search-form">
+                    <input type="text" name="query" placeholder="Search...">
+                    <button class="submit" type="submit">
+                      <i class="fa fa-magnifying-glass"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </search-suggestion>
+        </div>
+  
+        <div class="header-item right-menu">
+  
+          <div class="right-menu-icons-item dropdown">
+            <div class="header-button-icon">
+              <a class="right-menu-icons" href="#"><i class="fa-solid fa-bell"></i></a>
+            </div>
+          </div>
+  
+          <div class="right-menu-icons-item">
+            <div class="header-button-icon">
+              <a class="right-menu-icons" href="../userprofile.html"><i class="fa-solid fa-bookmark"></i></a>
+            </div>
+          </div>
+  
+          <div class="right-menu-icons-item dropdown">
+            <div class="header-button-icon">
+              <button class="dropbtn" id="dropdown2"><i class="fa fa-user"></i></button>
+              <div class="dropdown-menu2" id="dropdown-content2">
+                <div class="dropdown-content">
+                  <div class="column">
+                    <div class="content">
+                      <a href="../userprofile.html" class="dropdown-item">My Profile</a>
+                      <a href="messages.html" class="dropdown-item"><i class="fa-regular fa-envelope"></i>Messages</a>
+                      <a href="comments.html" class="dropdown-item"><i class="fa-regular fa-comment-dots"></i>My
+                        Comments</a>
+                      <a href="friends.html" class="dropdown-item"><i class="fa-solid fa-user-group"></i>Friends</a>
+                      <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-gear"></i>Settings</a>
+                      <a href="#" class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+      </div>
+  
+    </header>
+
+    <div class="biomain">
+        <div class="cover-image">
+            <img src="../../images/bio/tahire.jpg" alt="Tahire's Cover Image">
+        </div>
+        <div class="bio-content">
+            <h2>Tahirə Rəşid</h2>
+            <h3>Co-Founder, Web Designer, FrontEnd Developer</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="bioother">
+        <h1>Other Creators:</h1>
+        <div class="othercreators">
+            <div class="others"><a href="eyyubbio.html"><img src="../../images/bio/eyyub.jpg" alt="Eyyub's Cover Image"></a></div>
+            <div class="others"><a href="eltonbio.html"><img src="../../images/bio/elton.jpg" alt="Elton's Cover Image"></a></div>
+            <div class="others"><a href="feridbio.html"><img src="../../images/bio/ferid.jpg" alt="Ferid's Cover Image"></a></div>
+        </div>
+
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h3>Information</h3>
+            <ul>
+              <li><a href="privacypolicy.html">Privacy Policy</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="termsofuse.html">Terms of Use</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Our Creators</h3>
+            <ul>
+              <li><a href="eyyubbio.html">Əyyub Məmmədov</a></li>
+              <li><a href="tahirebio.html">Tahirə Rəşid</a></li>
+              <li><a href="eltonbio.html">Elton Rüstəmov</a></li>
+              <li><a href="feridbio.html">Fərid Nəcəfov</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>We in Social Media</h3>
+            <ul class="social-media-links">
+              <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:xxxxxxx@gmail.com">xxxxxxx@gmail.com</a></p>
+          </div>
+        </div>
+      </footer>
+
+</body>
+
+</html>

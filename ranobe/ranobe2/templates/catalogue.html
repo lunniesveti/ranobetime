@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="html" data-theme="light" lang="en" style="--vh-offset: 0px;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RanobeTime: Catalogue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="../static/css/catalogue.css">
+    <link rel="stylesheet" href="../static/css/navibar.css">
+    <link rel="stylesheet" href="../static/css/footer.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <div class="navbar" id="navbar">
+            <div class="header-item home">
+                <a href="{% url 'mainpage' %}" class="logo">
+                  <div class="home-logo">
+                    <div class="home-logo-top">
+                      Ranobe
+                      <b>Time</b>
+                    </div>
+                    <div class="home-logo-bottom">Read your novels here</div>
+                  </div>
+                </a>
+            </div>
+            <div class="header-item menu">
+              <div class="menu-item dropdown">
+                <div class="header-button-icon">
+                  <button class="dropbtn" id="dropdown1"><i class="fa fa-bars"></i><b>Menu</b></button>
+                  <div class="dropdown-menu1" id="dropdown-content1">
+                    <div class="dropdown-content" >
+                      <div class="column side1">
+                        <div class="content">
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-book-open"></i>Catalogue</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-bell"></i>Updates</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-globe"></i>Translators</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-feather"></i>Authors</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-home"></i>Publishers</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-star"></i>Collections</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-hashtag"></i>Genres</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-tags"></i>Tags</a>
+                        </div>
+                      </div>
+                      <div class="column side2">
+                        <div class="nav-side2">Choose Category</div>
+                        <div class="content">
+                          <a href="#" class="dropdown-item">Japan</a>
+                          <a href="#" class="dropdown-item">Korea</a>
+                          <a href="#" class="dropdown-item">China</a>
+                          <a href="#" class="dropdown-item">English</a>
+                          <a href="#" class="dropdown-item">Author's</a>
+                          <a href="#" class="dropdown-item">Fanfiction</a>
+                        </div>
+                        <div class="button-all">
+                          <a href="#" class="dropdown-item"><i class="fa fa-gift"></i>All</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="header-item search">
+                <search-suggestion class="header-suggestion" min-symbol="3">
+                      <div class="header-search" data-target="search-suggestion.wrapper">
+                        <form id="searchForm" onsubmit="handleSearch(event)" action="/suggestions" method="get" class="w-100" data-target="search-suggestion.form">
+                          <input type="hidden" name="type" value="novel" data-target="search-suggestion.typeStore">
+                          <div class="header-search-wrapper">
+                            <div class="header-search-form">
+                                <input type="text" name="query" placeholder="Search...">
+                                <button class="submit" type="submit">
+                                    <i class="fa fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                </search-suggestion>
+            </div>
+            <div class="header-item right-menu">
+              
+
+              {% if request.user.is_authenticated %}
+        <div class="right-menu-icons-item dropdown">
+          <div class="header-button-icon">
+            <a class="right-menu-icons" href="#"><i class="fa-solid fa-bell"></i></a>
+          </div>
+        </div>
+        <div class="right-menu-icons-item">
+          <div class="header-button-icon">
+            <a class="right-menu-icons" href="{% url 'userprofile' %}"><i class="fa-solid fa-bookmark"></i></a>
+          </div>
+        </div>
+        {% endif %}
+
+              <div class="right-menu-icons-item dropdown">
+                <div class="header-button-icon">
+                  <button class="dropbtn" id="dropdown2"><i class="fa fa-user"></i></button>
+                  <div class="dropdown-menu2" id="dropdown-content2">
+                    <div class="dropdown-content">
+                      <div class="column">
+                        <div class="content">
+                          {% if request.user.is_authenticated %}
+                          <a href="{% url 'userprofile' %}" class="dropdown-item">{{ request.user.username }}</a>
+                          <a href="messages.html" class="dropdown-item"><i class="fa-regular fa-envelope"></i>Messages</a>
+                          <a href="comments.html" class="dropdown-item"><i class="fa-regular fa-comment-dots"></i>My
+                            Comments</a>
+                          <a href="friends.html" class="dropdown-item"><i class="fa-solid fa-user-group"></i>Friends</a>
+                          <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-gear"></i>Settings</a>
+                          <a href="{% url 'logout' %}" class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
+                          {% else %}
+                          <a href="{% url 'login' %}" class="dropdown-item"><i class="fa-solid fa-arrow-right-to-bracket"></i>Log In</a>
+                          <a href="{% url 'register' %}" class="dropdown-item"><i class="fa-light fa-right-to-bracket"></i>Register</a>
+                          {% endif %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+    </div>
+
+  </header>
+
+  <div class="page" id="main-page">
+    <div class="page_inner">
+      <div class="container page_container">
+        <div class="paper page-wrapper page-wrapper-left">
+          <div class="manga-head">
+            <div class="manga-head_header">
+              <h2>Catalogue</h2>
+              <div class="toggle-buttons">
+                <button id="gridViewBtn" class="grid"><i class="fa fa-table-cells"></i></button>
+                <div class="divider"></div>
+                <button id="listViewBtn" class="list"><i class="fa fa-list"></i></button>
+            </div>
+            </div>
+          </div>
+          <div class="catalogue-divider"></div>
+          <div class="manga-list">
+            <div class="media-grid-wrap">
+              <div id="catalog" class="media-cards-grid">
+                <!-- Our catalog items will be dynamically added here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--dropdown menu-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var dropdown1Visible = false;
+      var dropdown2Visible = false;
+
+      // Hide the dropdowns by default
+      $("#dropdown-content1").hide();
+      $("#dropdown-content2").hide();
+
+      $("#dropdown1").click(function(e){
+          if (dropdown2Visible) {
+              $("#dropdown-content2").hide();
+              dropdown2Visible = false;
+          }
+          $("#dropdown-content1").toggle();
+          dropdown1Visible = !dropdown1Visible;
+          e.stopPropagation();
+      });
+      
+      $("#dropdown2").click(function(e){
+          if (dropdown1Visible) {
+              $("#dropdown-content1").hide();
+              dropdown1Visible = false;
+          }
+          $("#dropdown-content2").toggle();
+          dropdown2Visible = !dropdown2Visible;
+          e.stopPropagation();
+      });
+
+      // Close the dropdowns when clicking outside of them
+      $(document).click(function(){
+          $("#dropdown-content1").hide();
+          $("#dropdown-content2").hide();
+          dropdown1Visible = false;
+          dropdown2Visible = false;
+      });
+
+      // Prevent the dropdown from closing when clicking inside it
+      $(".dropdown-menu1").click(function(e){
+          e.stopPropagation();
+      });
+
+      $(".dropdown-menu2").click(function(e){
+          e.stopPropagation();
+      });
+    });
+  </script>
+  <!--dropdown menu-->
+
+  <!--CATALOGUE ADDER-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+      const catalogData = [
+        { name: "Heaven Official's Blessing (Novel)", image: "url('../static/jpgs/tian_guan_ci_fu.jpg')", subtitle: "China", year:"2019" },
+        { name: "The Grandmaster of Demonic Cultivation (Novel)", image: "url('../static/jpgs/modaozushi.jpg')", subtitle: "China", year:"2020" },
+        { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        { name: "Omniscient Reader’s Viewpoint (Novel)", image: "url('../static/jpgs/omniscient_readers_viewpoint.jpg')", subtitle: "Korea", year:"2020" },
+        { name: "Scum Villain's Self-Saving System (Novel)", image: "url('../static/jpgs/Scum_Villains_Self-Saving_System.jpg')", subtitle: "China", year:"2018" },
+        { name: "Quick Transmigration: The villain's Bai Yueguang is dead again (Novel)", image: "url('../static/jpgs/quick_transmigration.jpg')", subtitle: "China", year:"2019" },
+        { name: "Solo Leveling (I alone level up) (Novel)", image: "url('../static/jpgs/fake_job_academy.jpg')", subtitle:"Korea", year:"2020"},
+        { name: "Trash of the Count's Family (Novel)", image: "url('../static/jpgs/trash_of_counts_family.jpg')", subtitle: "Korea", year:"2021" },
+        { name: "The Beginning After the End (Novel)", image: "url('../static/jpgs/beginning.jpg')", subtitle: "English", year:"2020" },
+        { name: "Death Is The Only Ending For The Villain (Novel)", image: "url('../static/jpgs/The King Tomb Raider.jpg')", subtitle: "Korea", year:"2018" },
+        { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        // { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        // { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        // { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        // { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        // { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+        // { name: "Remnants of Filth (Novel)", image: "url('../static/jpgs/remnants_of_filth.jpg')", subtitle: "China", year:"2019" },
+      ];
+  
+      const catalogContainer = document.getElementById('catalog');
+      const gridViewBtn = document.getElementById('gridViewBtn');
+      const listViewBtn = document.getElementById('listViewBtn');
+  
+      function renderGridView() {
+        catalogContainer.innerHTML = '';
+        catalogContainer.classList.remove('media-cards-list');
+        catalogData.forEach(item => {
+          const gridItem = createGridItemElement(item);
+          catalogContainer.appendChild(gridItem);
+        });
+      }
+  
+      function renderListView() {
+        catalogContainer.innerHTML = '';
+        catalogContainer.classList.add('media-cards-list');
+        catalogData.forEach(item => {
+          const listItem = createListItemElement(item);
+          catalogContainer.appendChild(listItem);
+        });
+      }
+  
+      
+    function createGridItemElement(item) {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('media-card-wrap');
+  
+        const cardLink = document.createElement('a');
+        cardLink.classList.add('media-card');
+        cardLink.href = '#';
+        cardLink.style.backgroundImage = item.image;
+  
+        const caption = document.createElement('div');
+        caption.classList.add('media-card_caption');
+  
+        const subtitle = document.createElement('h5');
+        subtitle.classList.add('media-card_subtitle');
+        subtitle.textContent = item.subtitle;
+  
+        const title = document.createElement('h3');
+        title.classList.add('media-card_title', 'line-clamp');
+        title.textContent = item.name;
+  
+        caption.appendChild(subtitle);
+        caption.appendChild(title);
+        cardLink.appendChild(caption);
+        itemElement.appendChild(cardLink);
+  
+        return itemElement;
+    }
+  
+    function createListItemElement(item) {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('media-card-wrap');
+
+        const cardLink = document.createElement('a');
+        cardLink.classList.add('media-card');
+        cardLink.href = '#';
+        cardLink.style.backgroundImage = item.image;
+
+        const captionDiv = document.createElement('div');
+        captionDiv.classList.add('media-card_caption');
+
+        const novelLink = document.createElement('a');
+        novelLink.classList.add('novel');
+        novelLink.href = '#';
+
+        const title = document.createElement('h3');
+        title.classList.add('media-card_title');
+        title.textContent = item.name;
+
+        const subtitles = document.createElement('div');
+        subtitles.classList.add('subtitles');
+
+        const countrySubtitle = document.createElement('h5');
+        countrySubtitle.classList.add('media-card_subtitle', 'country');
+        countrySubtitle.textContent = item.subtitle;
+
+        const yearSubtitle = document.createElement('h5');
+        yearSubtitle.classList.add('media-card_subtitle', 'year');
+        yearSubtitle.textContent = item.year;
+
+        
+        subtitles.appendChild(countrySubtitle);
+        subtitles.appendChild(yearSubtitle);
+
+        novelLink.appendChild(title);
+        novelLink.appendChild(subtitles);
+
+        captionDiv.appendChild(novelLink);
+        itemElement.appendChild(cardLink);
+        itemElement.appendChild(captionDiv);
+
+        return itemElement;
+    }
+  
+    gridViewBtn.addEventListener('click', renderGridView);
+    listViewBtn.addEventListener('click', renderListView);
+  
+    // Initial render (grid view)
+      renderGridView();
+    });
+  </script>
+  <!--CATALOGUE ADDER-->
+  
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Information</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Our Creators</h3>
+        <ul>
+          <li><a href="#">Əyyub Məmmədov</a></li>
+          <li><a href="#">Tahirə Rəşid</a></li>
+          <li><a href="#">Elton Rüstəmov</a></li>
+          <li><a href="#">Fərid Nəcəfov</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>We in Social Media</h3>
+        <ul class="social-media-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:xxxxxxx@gmail.com">xxxxxxx@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

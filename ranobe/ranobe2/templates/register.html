@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/register.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="obsiy">
+        <div class="head"><h1><a href="">Register</a> or <a href="{% url 'login' %}">Log In</a></h1></div>
+        <form action="" onsubmit="return true" method="post">
+            {% csrf_token %}
+            <!-- <div class="first">
+                <label for="">First Name</label>
+                <input type="text" class="firstname">
+            </div> -->
+            <div class="user">
+                <label for="">Username</label>
+                {{ form.username }}
+                <!-- {{ form.username.errors }} -->
+                <!-- <input type="text" class="username"> -->
+            </div>
+            <div class="email">
+                <label for="">Email Address</label>
+                {{ form.email }}
+                <!-- {{ form.email.errors }} -->
+                <!-- <input type="email" class="emailaddress"> -->
+            </div>
+            <div class="password">
+                <label for="">Password</label>
+                {{ form.password }}
+                <!-- {{ form.password.errors }} -->
+                <!-- <input type="password" class="passwordline"> -->
+            </div>
+            <div class="againpassword">
+                <label for="">Again Password</label>
+                {{ form.password2 }}
+                <!-- {{ form.password2.errors }} -->
+                <!-- <input type="password" class="againpassword"> -->
+            </div>
+            
+            <div class="lastDiv">
+                <button type="submit" disabled="false" ><h2>SUBMIT</h2></button>
+                <div class="error">
+                    {{ form.username.errors }}
+                    {{ form.email.errors }}
+                    {{ form.password.errors }}
+                    {{ form.password2.errors }}
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../static/js/register.js"></script>
+</body>
+</html>

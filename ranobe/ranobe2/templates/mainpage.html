@@ -1,0 +1,537 @@
+{% load static simple_tags %}
+
+
+<!DOCTYPE html>
+<html class="html" data-theme="light" lang="en" style="--vh-offset: 0px;">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RanobeTime: Home Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="../static/css/mainpage.css">
+  <link rel="stylesheet" href="../static/css/navibar.css">
+  <link rel="stylesheet" href="../static/css/footer.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-color: #d8f0df;">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../static/js/dropdown.js"></script>
+  <script src="../static/js/carousel.js"></script>
+
+
+  <header>
+
+    <div class="navbar" id="navbar">
+
+      <div class="header-item home">
+        <a href="" class="logo">
+          <div class="home-logo">
+            <div class="home-logo-top">
+              Ranobe
+              <b>Time</b>
+            </div>
+            <div class="home-logo-bottom">Read your novels here</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-item menu">
+        <div class="menu-item dropdown">
+          <div class="header-button-icon">
+            <button class="dropbtn" id="dropdown1"><i class="fa fa-bars"></i><b>Menu</b></button>
+            <div class="dropdown-menu1" id="dropdown-content1">
+              <div class="dropdown-content">
+                <div class="column side1">
+                  <div class="content">
+                    <a href="{% url 'catalogue' %}" class="dropdown-item"><i class="fa-solid fa-book-open"></i>Catalogue</a>
+                    <a href="{% url 'mainpage' %}" class="dropdown-item"><i class="fa-solid fa-bell"></i>Updates</a>
+                    <a href="{% url 'translators' %}" class="dropdown-item"><i class="fa-solid fa-globe"></i>Translators</a>
+                    <a href="{% url 'authors' %}" class="dropdown-item"><i class="fa-solid fa-feather"></i>Authors</a>
+                    <a href="{% url 'authors' %}" class="dropdown-item"><i class="fa-solid fa-home"></i>Publishers</a>
+                    <a href="{% url 'catalogue' %}" class="dropdown-item"><i class="fa-solid fa-star"></i>Collections</a>
+                    <a href="{% url 'genres' %}" class="dropdown-item"><i class="fa-solid fa-film"></i>Genres</a>
+                    <a href="{% url 'tags' %}" class="dropdown-item"><i class="fa-solid fa-tags"></i>Tags</a>
+                  </div>
+                </div>
+                <div class="column side2">
+                  <div class="nav-side2">Choose Category</div>
+                  <div class="content">
+                    {% category as categories %}
+                    {% for i in categories %}
+                      <a href="{% url 'catalogue' %}" class="dropdown-item">{{i.name}}</a>
+                    {% endfor %}
+                    <!-- <a href="catalogue.html" class="dropdown-item">Korea</a>
+                    <a href="catalogue.html" class="dropdown-item">China</a>  
+                    <a href="catalogue.html" class="dropdown-item">English</a>
+                    <a href="catalogue.html" class="dropdown-item">Author's</a>
+                    <a href="catalogue.html" class="dropdown-item">Fanfiction</a> -->
+                  </div>
+                  <div class="button-all">
+                    <a href="{% url 'catalogue' %}" class="dropdown-item"><i class="fa fa-gift"></i>All</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-item search">
+        <search-suggestion class="header-suggestion" min-symbol="3">
+          <div class="header-search" data-target="search-suggestion.wrapper">
+            <form id="searchForm" onsubmit="handleSearch(event)" action="/suggestions" method="get" class="w-100"
+              data-target="search-suggestion.form">
+              <input type="hidden" name="type" value="novel" data-target="search-suggestion.typeStore">
+              <div class="header-search-wrapper">
+                <div class="header-search-form">
+                  <input type="text" name="query" placeholder="Search...">
+                  <button class="submit" type="submit">
+                    <i class="fa fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </search-suggestion>
+      </div>
+
+      <div class="header-item right-menu">
+
+        {% if request.user.is_authenticated %}
+        <div class="right-menu-icons-item dropdown">
+          <div class="header-button-icon">
+            <a class="right-menu-icons" href="{% url 'userprofile' %}"><i class="fa-solid fa-bell"></i></a>
+          </div>
+        </div>
+        <div class="right-menu-icons-item">
+          <div class="header-button-icon">
+            <a class="right-menu-icons" href="{% url 'userprofile' %}"><i class="fa-solid fa-bookmark"></i></a>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="right-menu-icons-item dropdown">
+          <div class="header-button-icon">
+            <button class="dropbtn" id="dropdown2"><i class="fa fa-user"></i></button>
+            <div class="dropdown-menu2" id="dropdown-content2">
+              <div class="dropdown-content">
+                <div class="column">
+                  <div class="content">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'userprofile' %}" class="dropdown-item">{{ request.user.username }}</a>
+                    <a href="messages.html" class="dropdown-item"><i class="fa-regular fa-envelope"></i>Messages</a>
+                    <a href="comments.html" class="dropdown-item"><i class="fa-regular fa-comment-dots"></i>My
+                      Comments</a>
+                    <a href="friends.html" class="dropdown-item"><i class="fa-solid fa-user-group"></i>Friends</a>
+                    <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-gear"></i>Settings</a>
+                    <a href="{% url 'logout' %}" class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="dropdown-item"><i class="fa-solid fa-arrow-right-to-bracket"></i>Log In</a>
+                    <a href="{% url 'register' %}" class="dropdown-item"><i class="fa-light fa-right-to-bracket"></i>Register</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div class="carousel">
+    <!-- Carousel daxili konteyneri butun itemlerler -->
+    <div class="carousel-inner">
+      <!-- karuselin icindeki itemler -->
+      {% carousel as carousels %}
+      {% for i in carousels %}
+        <div class="carousel-item">
+          <img src="{{i.image.url}}" alt="Featured Image 1">
+        </div>
+      {% endfor %}
+      <!-- <div class="carousel-item">
+        <img src="../static/images/carousel/img2.jpg" alt="Featured Image 2">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/carousel/img3.jpg" alt="Featured Image 3">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/carousel/img4.jpg" alt="Featured Image 4">
+      </div>
+      <div class="carousel-item">
+        <img src="../static/images/carousel/img5.jpg" alt="Featured Image 5">
+      </div> -->
+      <!-- elave itemler ucun yer -->
+    </div>
+
+    <!-- Carousel idaresi -->
+    <a class="carousel-control-prev" href="#!" role="button">
+      <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#!" role="button">
+      <span class="carousel-control-next-icon" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+
+  <main>
+
+    <section class="popular-novels">
+      <h2>Popular Novels</h2>
+      <div class="grid-container-popular-novels">
+        <!-- Repeat this block for each novel -->
+        {% novel as novels %}
+        {% for i in novels %}
+          <div class="grid-item-popular-novels">
+            <a href="{% url 'readingpage' %}"><img src="{{ i.image.url }}" alt="Everyone Returns"></a>
+            <h3>{{i.name}}</h3>
+          </div>
+        {% endfor %}
+        <!-- <div class="grid-item-popular-novels">
+          <img src="../static/images/popular-novels/Copper Coins.jpg" alt="Copper Coins">
+          <h3>Copper Coins</h3>
+        </div>
+        <div class="grid-item-popular-novels">
+          <img src="../static/images/popular-novels/fake_job_academy.jpg" alt="Fake Job Academy">
+          <h3>Fake Job Academy</h3>
+        </div>
+        <div class="grid-item-popular-novels">
+          <img src="../static/images/popular-novels/Heroic_Death_System.jpg" alt="Heroic Death System">
+          <h3>Heroic Death System</h3>
+        </div>
+        <div class="grid-item-popular-novels">
+          <img src="../static/images/popular-novels/The King Tomb Raider.jpg" alt="The King Tomb Raider">
+          <h3>The King Tomb Raider</h3>
+        </div>
+        <div class="grid-item-popular-novels">
+          <img src="../static/images/popular-novels/boyfriend_from_trashbin.jpg" alt="Boyfriend From Trashbin">
+          <h3>The King Tomb Raider</h3>
+        </div> -->
+        <!-- ... more items -->
+      </div>
+    </section>
+
+    <section class="popular-collections">
+      <h2>Collections</h2>
+      <div class="grid-container-popular-collections">
+        <!-- Repeat this block for each novel -->
+        {% collection as collections %}
+        {% for i in collections %}
+          <div class="grid-item-popular-collections">
+            <a href="{% url 'readingpage' %}"><img src="{{i.image.url}}" alt="Scum Villains Self Saving System"></a>
+          </div>
+        {% endfor %}
+        <!-- <div class="grid-item-popular-collections">
+          <img src="../static/images/popular-collections/quick_transmigration.jpg" alt="Quick Transmigration">
+        </div>
+        <div class="grid-item-popular-collections">
+          <img src="../static/images/popular-collections/tian_guan_ci_fu.jpg" alt="Tian Guan Ci Fu">
+        </div>
+        <div class="grid-item-popular-collections">
+          <img src="../static/images/popular-collections/trash_of_counts_family.jpg" alt="Trash of Count's Family">
+        </div>
+        <div class="grid-item-popular-collections">
+          <img src="../static/images/popular-collections/villain_wants_to_live.jpg" alt="Villain Wants To Live">
+        </div>
+        <div class="grid-item-popular-collections">
+          <img src="../static/images/popular-collections/remnants_of_filth.jpg" alt="Remnants of Filth">
+        </div> -->
+        <!-- ... more items -->
+      </div>
+    </section>
+
+    <section class="new-stories">
+      <h2>Stories</h2>
+      <div class="grid-container-new-stories">
+        <!-- Repeat this block for each novel -->
+        {% story as stories %}
+        {% for i in stories %}
+          <div class="grid-item-new-stories">
+            <a href="{% url 'readingpage' %}"><img src="{{i.image.url}}" alt="Modaozushi"></a>
+          </div>
+        {% endfor %}
+        <!-- <div class="grid-item-new-stories">
+          <img src="../static/images/new-stories/Liu_Yao.jpg" alt="Liu Yao">
+        </div>
+        <div class="grid-item-new-stories">
+          <img src="../static/images/new-stories/Autumn_leaves.jpg" alt="Autumn Leaves">
+        </div>
+        <div class="grid-item-new-stories">
+          <img src="../static/images/new-stories/Killing the wolf.jpg" alt="Killing The Wolf">
+        </div>
+        <div class="grid-item-new-stories">
+          <img src="../static/images/new-stories/beginning.jpg" alt="Beginning After Death">
+        </div>
+        <div class="grid-item-new-stories">
+          <img src="../static/images/new-stories/omniscient_readers_viewpoint.jpg" alt="Omniscient Reader's Viewpoint">
+        </div> -->
+        <!-- ... more items -->
+      </div>
+    </section>
+
+
+<section class="asagihisse">
+
+    <section class="new-updates">
+      <h2>New Updates</h2>
+      <div class="container-new-updates">
+        
+        {% for i in context1 %}
+        <a href="{% url 'chapter' %}">
+          <ul class="updates-list">
+            <li class="update-item">
+              <div class="update-cover">
+                <img src="{{i.image.url}}" alt="cover">
+              </div>
+              <div class="update-text">
+                <div class="birinci-sira">
+                  <h3 class="update-title">{{i.name}}</h3>
+                  <p class="update-time">{{i.update_date.hour}} hours ago</p>
+                </div>
+                <p class="update-info">{{i.chapter}}</p>
+              </div>
+            </li>
+          </ul>
+        </a>
+        {% endfor %}
+
+        <!-- <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">2 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 9</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">3 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 8</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">4 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 7</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">5 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 6</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">6 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 5</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">7 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 4</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">8 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 3</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">9 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 2</p>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="updates-list">
+          <li class="update-item-last">
+            <div class="update-cover">
+              <img src="../static/images/modaozushi.jpg" alt="cover">
+            </div>
+            <div class="update-text">
+              <div class="birinci-sira">
+                <h3 class="update-title">Update Title</h3>
+                <p class="update-time">10 hours ago</p>
+              </div>
+              <p class="update-info">Chapter 1</p>
+            </div>
+          </li>
+        </ul> -->
+
+      </div>
+
+    </section>
+
+<div class="qiraqdakilar">
+
+    <section class="popular-genres">
+      <h2>Genres</h2>
+      <div class="popular-genres-container">
+      <ul class="genre-list">
+        {% genr as genres %}
+        {% for i in genres %}
+          <li><a href="#">{{i.name}}</a></li>
+        {% endfor %}
+        <!-- <li><a href="#">Science Fiction</a></li>
+        <li><a href="#">Mystery</a></li>
+        <li><a href="#">Adventure</a></li>
+        <li><a href="#">Romance</a></li> -->
+        <!-- More genres -->
+      </ul>
+    </div>
+    </section>
+
+    <section class="popular-tags">
+      <h2>Tags</h2>
+      <div class="popular-tags-container">
+      <ul class="tag-list">
+        {% tag as tags %}
+        {% for i in tags %}
+          <li><a href="#">{{i.name}}</a></li>
+        {% endfor %}
+        <!-- <li><a href="#">Marriage</a></li>
+        <li><a href="#">Young Adult</a></li>
+        <li><a href="#">Aristocrats</a></li>
+        <li><a href="#">Royal Family</a></li> -->
+        <!-- More tags -->
+      </ul>
+    </div>
+    </section>
+
+    <section class="advertisement">
+      <h1>Burada sizin reklaminiz ola bilər</h1>
+    </section>
+
+  </div>
+  
+  </section>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>Information</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Our Creators</h3>
+        <ul>
+          <li><a href="#">Əyyub Məmmədov</a></li>
+          <li><a href="#">Tahirə Rəşid</a></li>
+          <li><a href="#">Elton Rüstəmov</a></li>
+          <li><a href="#">Fərid Nəcəfov</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>We in Social Media</h3>
+        <ul class="social-media-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <p>Email: <a href="mailto:xxxxxxx@gmail.com">xxxxxxx@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+
+</body>
+
+</html>

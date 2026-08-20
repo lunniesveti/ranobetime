@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="html" data-theme="light" lang="en" style="--vh-offset: 0px;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RanobeTime: User Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="../static/css/userprofile.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<div id="div-form"></div>
+<form class="inl inl0" id="form" action="" method="post">
+  {% csrf_token %}
+    <label class="inl inl1" for="lin">
+      <img src="{{ request.user.profile.image.url }}" alt="" class="form-image">
+    </label>
+    <input class="inl inl2" type="file" id="lin" name="image">
+    <button class="inl inl3" id="b1" type="submit">SAVE</button>
+</form>
+
+<body>
+  <header>
+    <div class="navbar" id="navbar">
+            <div class="header-item home">
+                <a href="{% url 'mainpage' %}" class="logo">
+                  <div class="home-logo">
+                    <div class="home-logo-top">
+                      Ranobe
+                      <b>Time</b>
+                    </div>
+                    <div class="home-logo-bottom">Read your novels here</div>
+                  </div>
+                </a>
+            </div>
+            <div class="header-item menu">
+              <div class="menu-item dropdown">
+                <div class="header-button-icon">
+                  <button class="dropbtn" id="dropdown1"><i class="fa fa-bars"></i><b>Menu</b></button>
+                  <div class="dropdown-menu1" id="dropdown-content1">
+                    <div class="dropdown-content" >
+                      <div class="column side1">
+                        <div class="content">
+                          <a href="{% url 'catalogue' %}" class="dropdown-item"><i class="fa-solid fa-book-open"></i>Catalogue</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-bell"></i>Updates</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-globe"></i>Translators</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-feather"></i>Authors</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-home"></i>Publishers</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-star"></i>Collections</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-film"></i>Genres</a>
+                          <a href="#" class="dropdown-item"><i class="fa-solid fa-tags"></i>Tags</a>
+                        </div>
+                      </div>
+                      <div class="column side2">
+                        <div class="nav-side2">Choose Category</div>
+                        <div class="content">
+                          <a href="#" class="dropdown-item">Japan</a>
+                          <a href="#" class="dropdown-item">Korea</a>
+                          <a href="#" class="dropdown-item">China</a>
+                          <a href="#" class="dropdown-item">English</a>
+                          <a href="#" class="dropdown-item">Author's</a>
+                          <a href="#" class="dropdown-item">Fanfiction</a>
+                        </div>
+                        <div class="button-all">
+                          <a href="#" class="dropdown-item"><i class="fa fa-gift"></i>All</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="header-item search">
+                <search-suggestion class="header-suggestion" min-symbol="3">
+                      <div class="header-search" data-target="search-suggestion.wrapper">
+                        <form id="searchForm" onsubmit="handleSearch(event)" action="/suggestions" method="get" class="w-100" data-target="search-suggestion.form">
+                          <input type="hidden" name="type" value="novel" data-target="search-suggestion.typeStore">
+                          <div class="header-search-wrapper">
+                            <div class="header-search-form">
+                                <input type="text" name="query" placeholder="Search...">
+                                <button class="submit" type="submit">
+                                    <i class="fa fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                </search-suggestion>
+            </div>
+            <div class="header-item right-menu">
+              <div class="right-menu-icons-item dropdown">
+                <div class="header-button-icon">
+                  <a class="right-menu-icons" href="#"><i class="fa-solid fa-bell"></i></a>
+                </div>
+              </div>
+              <div class="right-menu-icons-item">
+                <div class="header-button-icon">
+                  <a class="right-menu-icons" href="{% url 'userprofile' %}"><i class="fa-solid fa-bookmark"></i></a>
+                </div>
+              </div>
+              <div class="right-menu-icons-item dropdown">
+                <div class="header-button-icon">
+                  <button class="dropbtn" id="dropdown2"><i class="fa fa-user"></i></button>
+                  <div class="dropdown-menu2" id="dropdown-content2">
+                    <div class="dropdown-content">
+                      <div class="column">
+                        <div class="content">
+                        <a href="{% url 'userprofile' %}" class="dropdown-item">{{ request.user.username }}</a>
+                        <a href="messages.html" class="dropdown-item"><i class="fa-regular fa-envelope"></i>Messages</a>
+                        <a href="comments.html" class="dropdown-item"><i class="fa-regular fa-comment-dots"></i>My Comments</a>
+                        <a href="friends.html" class="dropdown-item"><i class="fa-solid fa-user-group"></i>Friends</a>
+                        <a href="settings.html" class="dropdown-item"><i class="fa-solid fa-gear"></i>Settings</a>
+                        <a href="{% url 'logout' %}" class="dropdown-item"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log Out</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+    </div>
+
+  </header>
+
+  <div class="page" id="main-page">
+    <div class="page_inner">
+      <div class="profile container">
+        <div class="profile-header">
+          <div class="profile-header-body">
+            <div class="profile-user">
+              <div class="profil-user-avatar" id="sekil">
+                <img src="{{ request.user.profile.image.url }}" alt="" class="profile-user-avatar-image">
+              </div>
+              <div class="profil-user-body">
+                <div class="profile-user-username">
+                  <span class="mr-10">{{ request.user.username }}</span>
+                </div>
+                <div class="profile-user-rank">
+                  <span>Readed titles 135 # Liked chapters 2341</span>
+                </div>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <a class="button button_st" href="settings.html" title="Change Settings">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+              </a>
+            </div>
+          </div>
+          <div class="profile-nav">
+            <div class="profile-nav-items tabs_list">
+              <a href="" class="profile-nav-items_link tabs_item_active">List</a>
+              <a href="comments.html" class="profile-nav-items_link tabs_item">Comments</a>
+              <a href="friends.html" class="profile-nav-items_link tabs_item">Friends</a>
+              <a href="messages.html" class="profile-nav-items_link tabs_item">Messages</a>
+              <a href="updates.html" class="profile-nav-items_link tabs_item">Updates</a>
+            </div>
+            <div class="profile-info-button" tabindex="-1" data-open-modal="#userinfo">
+              Information about user
+              <i class="fa-solid fa-info-circle"></i>
+            </div>
+          </div>
+        </div>
+        <div class="bookmark-container">
+          <div class="bookmark-sidebar">
+            <div class="bookmark-sidebar_wrap">
+                <div class="bookmark-sidebar__panel bookmark-sidebar__panel_folders">
+                    <div class="menu menu_page menu_sm bookmark-menu">
+                      <div class="menu__item is-active">
+                        <span class="bookmark-menu_name" data-category="All">All</span>
+                        <span class="category-count"></span>
+                      </div>
+                      <div class="menu__item">
+                        <span class="bookmark-menu_name" data-category="Reading">Reading</span>
+                        <span class="category-count"></span>
+                      </div>
+                      <div class="menu__item">
+                        <span class="bookmark-menu_name" data-category="Planning">Planning</span>
+                        <span class="category-count"></span>
+                      </div>
+                      <div class="menu__item">
+                        <span class="bookmark-menu_name" data-category="Abandoned">Abandoned</span>
+                        <span class="category-count"></span>
+                      </div>
+                      <div class="menu__item">
+                        <span class="bookmark-menu_name" data-category="Read">Read</span>
+                        <span class="category-count"></span>
+                      </div>
+                      <div class="menu__item">
+                        <span class="bookmark-menu_name" data-category="Favorite">Favorite</span>
+                        <span class="category-count"></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+              <div class="bookmark-settings">
+                <div class="bookmark-settings__group bookmark-settings__group_sort">
+                  <div class="bookmark-settings__title">Sorting</div>
+                    <div class="bookmark-settings__content">
+                      <label class="control bookmark-settings__item">
+                        <input name="sort_field" class="control__input" type="radio" value="manga_name">
+                        <span class="control__indicator control__indicator_radio"></span>
+                        <span class="control__text">Name (A - Z)</span>
+                      </label>
+                      <label class="control bookmark-settings__item">
+                        <input name="sort_field" class="control__input" type="radio" value="created_at" checked>
+                        <span class="control__indicator control__indicator_radio"></span>
+                        <span class="control__text">Data creating</span>
+                      </label>
+                      <label class="control bookmark-settings__item">
+                        <input name="sort_field" class="control__input" type="radio" value="chapter_created_at">
+                        <span class="control__indicator control__indicator_radio"></span>
+                        <span class="control__text">Data adding chapter</span>
+                      </label>
+                      <label class="control bookmark-settings__item">
+                        <input name="sort_field" class="control__input" type="radio" value="chapter_reading">
+                        <span class="control__indicator control__indicator_radio"></span>
+                        <span class="control__text">Data reading</span>
+                      </label>
+                      <div class="divider"></div>
+                      <label class="control bookmark-settings__item">
+                        <input name="direction" class="control__input" type="radio" value="desc" checked>
+                        <span class="control__indicator control__indicator_radio"></span>
+                        <span class="control__text">Descending</span>
+                      </label>
+                      <label class="control bookmark-settings__item">
+                        <input name="direction" class="control__input" type="radio" value="asc">
+                        <span class="control__indicator control__indicator_radio"></span>
+                        <span class="control__text">Ascending</span>
+                      </label>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bookmark-wrapper">
+            <div class="bookmark-input">
+              <input type="text" placeholder="Search with name" class="form__input bookmark-input__filter">
+            </div>
+            <div class="bookmark__list paper" id="bookList">
+                <!-- Books will be dynamically added here -->
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--dropdown menu-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../static/js/userprofile.js"></script>
+  <script>
+$(document).ready(function(){
+  var dropdown1Visible = false;
+  var dropdown2Visible = false;
+
+  // Hide the dropdowns by default
+  $("#dropdown-content1").hide();
+  $("#dropdown-content2").hide();
+
+  $("#dropdown1").click(function(e){
+      if (dropdown2Visible) {
+          $("#dropdown-content2").hide();
+          dropdown2Visible = false;
+      }
+      $("#dropdown-content1").toggle();
+      dropdown1Visible = !dropdown1Visible;
+      e.stopPropagation();
+  });
+  
+  $("#dropdown2").click(function(e){
+      if (dropdown1Visible) {
+          $("#dropdown-content1").hide();
+          dropdown1Visible = false;
+      }
+      $("#dropdown-content2").toggle();
+      dropdown2Visible = !dropdown2Visible;
+      e.stopPropagation();
+  });
+
+  // Close the dropdowns when clicking outside of them
+  $(document).click(function(){
+      $("#dropdown-content1").hide();
+      $("#dropdown-content2").hide();
+      dropdown1Visible = false;
+      dropdown2Visible = false;
+  });
+
+  // Prevent the dropdown from closing when clicking inside it
+  $(".dropdown-menu1").click(function(e){
+      e.stopPropagation();
+  });
+
+  $(".dropdown-menu2").click(function(e){
+      e.stopPropagation();
+  });
+});
+
+  </script>
+  <!--dropdown menu-->
+
+  <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        let books = [
+        { name: "Remnants of Filth (Novel)", orgname:"余污", category: "Reading", 
+      addedDate: "27.09.2023", coverImage: "../static/jpgs/remnants_of_filth.jpg", lastchapter: "68" },
+      { name: "I Got a Fake Job at the Academy (Novel)", orgname:"아카데미에 위장취업당했다", category: "Reading", 
+      addedDate: "22.09.2022", coverImage: "../static/jpgs/fake_job_academy.jpg", lastchapter: "297" },
+      { name: "Omniscient Reader’s Viewpoint (Novel)", orgname:"전지적 독자 시점", category: "Reading", 
+      addedDate: "08.12.2021", coverImage: "../static/jpgs/omniscient_readers_viewpoint.jpg", lastchapter: "553" },
+      { name: "Trash of the Count's Family (Novel)", orgname:"백작가 의 망나니 가 되었다", category: "Reading", 
+      addedDate: "27.07.2021", coverImage: "../static/jpgs/trash_of_counts_family.jpg", lastchapter: "865" },
+      { name: "The Beginning After the End (Novel)", orgname:"The Beginning After the End", category: "Reading", 
+      addedDate: "01.06.2021", coverImage: "../static/jpgs/beginning.jpg", lastchapter: "451" },
+
+      { name: "Everyone Else is a Returnee (Novel)", orgname:"나 빼고 다 귀환자", category: "Planning", 
+      addedDate: "09.11.2023", coverImage: "../static/jpgs/Everyone_Returne.jpg", lastchapter: "353" },
+      { name: "Quick Transmigration: The villain's Bai Yueguang is dead again (Novel)", orgname:"快穿：反派的白月光又死了", category: "Planning", 
+      addedDate: "06.10.2023", coverImage: "../static/jpgs/quick_transmigration.jpg", lastchapter: "10" },
+      { name: "Don't Pick Up Boyfriends From the Trash Bin (Novel)", orgname:"不要在垃圾桶里捡男朋友", category: "Planning", 
+      addedDate: "09.10.2023", coverImage: "../static/jpgs/boyfriend_from_trashbin.jpg", lastchapter: "96" },
+      { name: "Autumn leaves floating on the river of eternity (Novel)", orgname:"Осенние листья плывущие по реке вечности", category: "Planning", 
+      addedDate: "14.10.2023", coverImage: "../static/jpgs/Autumn_leaves.jpg", lastchapter: "5.5" },
+      { name: "Scum Villain's Self-Saving System (Novel)", orgname:"重生之]人渣反派自救系統", category: "Planning", 
+      addedDate: "01.01.2023", coverImage: "../static/jpgs/Scum_Villains_Self-Saving_System.jpg", lastchapter: "107" },
+
+      { name: "The King Tomb Raider (Novel)", orgname:"도굴왕", category: "Favorite", 
+      addedDate: "20.12.2021", coverImage: "../static/jpgs/The King Tomb Raider.jpg", lastchapter: "415" },
+      { name: "Copper Coins (Novel)", orgname:"铜钱龛世", category: "Favorite", 
+      addedDate: "27.09.2023", coverImage: "../static/jpgs/Copper Coins.jpg", lastchapter: "87" },
+      { name: "Killing the wolf (Novel)", orgname:"杀破狼", category: "Favorite", 
+      addedDate: "27.09.2023", coverImage: "../static/jpgs/Killing the wolf.jpg", lastchapter: "105" },
+      { name: "Heaven Official's Blessing (Novel)", orgname:"天官赐福", category: "Favorite", 
+      addedDate: "12.06.2021", coverImage: "../static/jpgs/tian_guan_ci_fu.jpg", lastchapter: "252" },
+      { name: "The Grandmaster of Demonic Cultivation (Novel)",orgname:"魔道祖师", category: "Favorite", 
+      addedDate: "12.06.2021", coverImage: "../static/jpgs/modaozushi.jpg", lastchapter: "127" },
+
+
+      { name: "The Villain Wants to Live (Novel)", orgname:"악당은 살고 싶다", category: "Read", 
+      addedDate: "13.11.2022", coverImage: "../static/jpgs/villain_wants_to_live.jpg", lastchapter: "361" },
+      { name: "Liu Yao: The Revitalization of Fuyao Sect (Novel)", orgname:"六爻", category: "Read", 
+      addedDate: "13.10.2021", coverImage: "../static/jpgs/Liu_Yao.jpg", lastchapter: "112" },
+      { name: "Heroic Death System (Novel)", orgname:"英勇赴死系统", category: "Read", 
+      addedDate: "20.10.2023", coverImage: "../static/jpgs/Heroic_Death_System.jpg", lastchapter: "175" },// ... more books ...
+      ];
+      
+      const bookList = document.getElementById('bookList');
+  const bookmarkMenu = document.querySelector('.bookmark-menu');
+  let selectedCategory = 'All'; // Default category
+  let sortField = 'created_at'; // Default sorting field
+  let direction = 'desc'; // Default sorting direction
+
+  function renderBooks() {
+    // Clear existing books
+    bookList.innerHTML = '';
+
+    // Filter books based on the selected category
+    const filteredBooks = books.filter(book => selectedCategory === 'All' || book.category === selectedCategory);
+
+    // Sort books based on selected sorting options
+    const sortedBooks = sortBooks(filteredBooks);
+
+    // Render filtered and sorted books
+    sortedBooks.forEach(book => {
+      const bookItem = createBookItem(book);
+      bookList.appendChild(bookItem);
+    });
+
+    // Update category counts
+    updateCategoryCounts();
+  }
+
+
+  function createBookItem(book) {
+    const bookItem = document.createElement('div');
+    bookItem.classList.add('bookmark-item');
+
+      // Create and append book content based on your existing book item structure
+      // You can use similar logic as in the previous examples
+      // Example: Creating a basic book structure with cover image
+          bookItem.innerHTML = `
+            <div class="bookmark-item__body">
+              <div class="bookmark-item__cover-wrap">
+                <div class="bookmark-item__cover shadow-sm">
+                  <a href="#"><img src="${book.coverImage}" class="cover-image" alt="book-cover"></a>
+                </div>
+              </div>
+              <div class="bookmark-item__content">
+                  <div class="bookmark-item__info">
+                    <div class="bookmark-item__info-header line-clamp">
+                      <a href="#" class="bookmark-item_name">
+                        <span>${book.name}</span>
+                        <span class="bookmark-item_alt-name text-muted">${book.orgname}</span>
+                      </a>
+                    </div>
+                    <div class="bookmark-item__info-subheader">
+                      <a href="#" class="link-default">Last Chapter ${book.lastchapter}</a>
+                    </div>
+                    <div class="bookmark-item__footer text-truncate">
+                    </div>
+                  </div>
+                  <div class="bookmark-item__meta">
+                    <div class="bookmark-meta-item">
+                      <div class="bookmark-meta-item__title">
+                        <span>Added</span>
+                      </div>
+                      <div class="bookmark-meta-item__value">${book.addedDate}</div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          `;
+      
+      return bookItem;
+  }
+
+  // ... your existing sorting logic ...
+  function sortBooks(booksToSort) {
+      return booksToSort.sort((a, b) => {
+      // Implement sorting logic based on the selected field and direction
+      if (sortField === 'manga_name') {
+        return direction === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+      } else if (sortField === 'created_at') {
+        const dateA = new Date(
+          parseInt(a.addedDate.split('.')[2]),
+          parseInt(a.addedDate.split('.')[1]) - 1,
+          parseInt(a.addedDate.split('.')[0])
+      );
+
+      const dateB = new Date(
+          parseInt(b.addedDate.split('.')[2]),
+          parseInt(b.addedDate.split('.')[1]) - 1,
+          parseInt(b.addedDate.split('.')[0])
+      );
+
+      if (direction === 'asc') {
+          return dateA - dateB;
+      } else {
+          return dateB - dateA;
+      }
+      } else if (sortField === 'chapter_created_at') {
+        // Implement other sorting criteria if needed
+      } else if (sortField === 'chapter_reading') {
+        // Implement other sorting criteria if needed
+      }
+      return 0;
+    });
+  }
+
+  function updateCategoryCounts() {
+    const categoryCounts = { All: 0 };
+
+    books.forEach(book => {
+      categoryCounts.All++;
+
+      if (!categoryCounts[book.category]) {
+        categoryCounts[book.category] = 1;
+      } else {
+        categoryCounts[book.category]++;
+      }
+    });
+
+    // Update the counts in the menu
+    const menuItems = Array.from(bookmarkMenu.children);
+    menuItems.forEach(menuItem => {
+      const categoryName = menuItem.querySelector('.bookmark-menu_name').getAttribute('data-category');
+      const countElement = menuItem.querySelector('.category-count');
+
+      if (categoryCounts[categoryName]) {
+        countElement.textContent = `${categoryCounts[categoryName]}`;
+      } else {
+        countElement.textContent = '0';
+      }
+    });
+  }
+
+  // Event listener for category changes
+  bookmarkMenu.addEventListener('click', function (event) {
+    if (event.target.classList.contains('bookmark-menu_name')) {
+      // Remove the 'is-active' class from all buttons
+      document.querySelectorAll('.menu__item').forEach(button => {
+        button.classList.remove('is-active');
+      });
+
+      selectedCategory = event.target.getAttribute('data-category');
+      renderBooks();
+
+      // Add the 'is-active' class to the clicked button
+      event.target.parentElement.classList.add('is-active');
+    }
+  });
+
+  // Event listener for sorting changes
+  document.querySelector('.bookmark-settings__group_sort').addEventListener('change', function (event) {
+    const sortFieldInput = document.querySelector('input[name="sort_field"]:checked');
+    const directionInput = document.querySelector('input[name="direction"]:checked');
+
+    if (sortFieldInput && directionInput) {
+      sortField = sortFieldInput.value;
+      direction = directionInput.value;
+      renderBooks();
+    }
+  });
+
+  // Initial render
+  renderBooks();
+  });
+  </script>
+
+
+</body>
+
+</html>

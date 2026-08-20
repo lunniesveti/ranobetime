@@ -1,0 +1,135 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-image: linear-gradient(to right, #4f90ff, #2496ff);
+    display: flex;
+    justify-content: center;
+}
+form{
+    margin-top: 50px;
+    /* border: 1px solid blue; */
+}
+div.obsiy{
+    background-color: white;
+    height: 450px;
+    width: 900px;
+    margin-top: 10%;
+    /* border: 1px solid red; */
+
+}
+div.head{
+    font-family: Arial, Helvetica, sans-serif;
+    display: inline-block;
+    height: 50px;
+    width: 900px;
+    text-align: center;
+    font-size: x-large;
+}
+h1{
+    margin-top: 40px;
+    background-image: linear-gradient(to right, #4f90ff, #2496ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+label{
+    transition: 1s;
+    position: absolute;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(80,80,80);
+}
+input{
+    height: 25px;
+    font-size: 18px;
+    outline: none;
+}
+/* input.firstname{
+    width: 350px;
+    padding: 0px;
+    border: none;
+    border-bottom: 2px solid rgb(200,200,200);
+} */
+input.passwordline{
+    width: 350px;
+    border: none;
+    border-bottom: 2px solid rgb(200,200,200);
+}
+input.againpassword{
+    width: 350px;
+    border: none;
+    border-bottom: 2px solid rgb(200,200,200);
+}
+input.emailaddress{
+    width: 350px;
+    border: none;
+    border-bottom: 2px solid rgb(200,200,200);
+}
+input.username{
+    width: 350px;
+    border: none;
+    border-bottom: 2px solid rgb(200,200,200);
+}
+
+input:focus{
+    border-bottom-color: #65b5ff;
+}
+/* div.first{
+    padding-left: 50px;
+    padding-right: 20px;
+    display: inline-block;
+    width: 380px;
+    margin-top: 55px;
+} */
+div.password{
+    padding-left: 50px;
+    padding-right: 20px;
+    display: inline-block;
+    width: 380px;
+    margin-top: 55px;
+}
+div.againpassword{
+    padding-left: 20px;
+    padding-right: 40px;
+    width: 380px;
+    display: inline-block;
+    margin-top: 55px;
+}
+div.email{
+    margin-top: 55px;
+    padding-left: 20px;
+    padding-right: 40px;
+    display: inline-block;
+    width: 380px;
+}
+div.user{
+    padding-left: 50px;
+    padding-right: 20px;
+    display: inline-block;
+    width: 380px;
+    margin-top: 55px;
+}
+button{
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 200px;
+    height: 50px;
+    border-radius: 3px;
+    background-image: linear-gradient(to right, #4f90ff, #2496ff);
+    border: none;
+}
+h2{
+    color: white;
+}
+div.error{
+    padding: 0px;
+    margin-top: 45px;
+    display: inline-block;
+    width: 545px;
+    height: 70px;
+    margin-left: 35px;
+}
+.lastDiv{
+    display: flex;
+}

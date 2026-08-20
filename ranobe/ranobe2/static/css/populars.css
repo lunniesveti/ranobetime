@@ -1,0 +1,139 @@
+* {box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+  background-color: #f2f2f3;
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  font-family: -apple-system,BlinkMacSystemFont,Open Sans,Roboto,Helvetica Neue,Helvetica,sans-serif;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  font-size: 14px;
+}
+
+/* START - The all page */
+
+.page{
+  padding-top: 60px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 100%;
+}
+.page_inner{
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+.page_container{
+  max-width: 1400px;
+  margin: 17px 30px;
+  padding: 0 20px;
+  /*width: 100%;*/
+}
+.container{
+  position: relative;
+}
+.paper{
+  background: #fff;
+  border-radius: 5px;
+}
+
+/* ITEMS list - START */
+
+.str-right{
+  width:320px;
+  float: right;
+  overflow: hidden;
+}
+.card{
+    background: #fff;
+    height: 100%;
+    overflow-y: auto;
+    max-height: calc(100% - 44px);
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+}
+.card-header{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(34,36,38,.1);
+    min-height: 50px;
+}
+.card-title{
+    display: block;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.nav-tabs-buttons{
+    border-bottom: 1px solid rgba(34,36,38,.1);
+    padding: 0 15px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+.nav-item :hover{
+    color:  #1abb9c;
+}
+.nav-item{
+    margin-right: 15px;
+}
+.nav-item a{
+    color: black;
+}
+.nav-button{
+    text-decoration: none;
+    font-weight: 500;
+    padding: 12px 0;
+}
+.card-content{
+    display: block;
+}
+.card-list_item{
+    padding: 8px 15px;
+    height: 50px;
+    border-bottom: 1px solid rgba(34,36,38,.1)!important;
+    display: flex;
+    align-items: center;
+}
+.card-list_item a{
+    padding: 4px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+}
+a .profile{
+    display: flex;
+    align-items: center;
+}
+.avatar{
+    display: flex;
+    align-items: center;
+}
+.avatar img{
+    font-size: 11px;
+    font-weight: 400;
+    height: 22px;
+    line-height: 22px;
+    width: 22px;
+    border-radius: 5px;
+}
+.name {
+    margin: 0 8px;
+}
+.name :hover{
+    color: #1abb9c;
+}
+.followers-number{
+    color: #1abb9c;
+    margin-left: auto;
+}
+/* ITEMS list - FINISH */

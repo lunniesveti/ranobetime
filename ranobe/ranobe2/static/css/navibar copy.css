@@ -1,0 +1,272 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+  
+body{
+    background-color: #f2f2f3;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    font-family: -apple-system,BlinkMacSystemFont,Open Sans,Roboto,Helvetica Neue,Helvetica,sans-serif;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    font-size: 14px;
+}
+
+/* The navigation bar START*/
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 60px;
+    background-color: #09a569;
+  }
+  .navbar {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0px 50px;
+  }
+  
+  .header-item{
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+  .home{
+    position: relative;
+    text-decoration: none;
+  }
+  .logo{
+    text-decoration: none;
+  }
+  .home-logo{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    color: white;
+  }
+  .home-logo-top{
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 24px;
+  }
+  .home-logo-top b{
+    font-weight: bolder;
+  }
+  .home-logo-bottom{
+    font-size: .9375rem;
+    font-weight: 700;
+    line-height: 16px;
+  }
+  .logo :hover{
+    background: none;
+  }
+  /* Menu button*/
+  .menu-item :hover{
+    background-color: #e0e1e21f;
+    border-radius: 4px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out;
+  }
+  
+  .menu-item .header-button-icon{
+    width: 90px;
+    height: 40px;
+    justify-content: start;
+  }
+  .menu-item{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 120px;
+  }
+  .menu-item button{
+    height: 100%;
+    width: 100px;
+    padding: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  /* Menu button*/
+  
+  /* Style the search box inside the navigation bar */
+  .ms-2 flex-grow-1{
+    padding: 10px 0;
+  }
+  .navbar input[type=text] {
+    padding: 5px;
+    height: 40px;
+    width: 700px;
+    border-radius: 5px;
+    border: none;
+    font-size: 17px;    
+  }
+  .navbar input[type=text] :hover{
+    background: #ddd;
+    color: #09a569;
+  }
+  .submit {
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  button{
+    height: 36px;
+    width: 36px;
+    padding: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  
+  /* START - Style the MENU dropdown*/
+  /* Style the dropdown button */
+  .dropbtn {
+    background-color: #09a569;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  /* Style the dropdown content */
+  .dropdown-menu1 {
+    display: none;
+    top: 40px;
+    position: absolute;
+    left: 0;
+    width: 440px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  /* Style for the dropdown content container */
+  .dropdown-content {
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+  }
+  .dropdown-menu1 :hover{
+    background-color: white;
+  }
+  /* Style for the columns inside the dropdown content */
+  .column {
+    width: 220px;
+    border-right: 1px solid rgba(34,36,38,.1);
+    padding: 10px;
+  }
+  /* Style for the content inside each column */
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Style for the navigation items (links) */
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    height: 35px;
+    padding: 0 16px;
+    text-decoration: none;
+    color: #494949;
+    margin-bottom: 4px;
+  }
+  
+  /* Style for the icons inside the dropdown items */
+  .dropdown-item i {
+    margin-right: 8px;
+  }
+  /* Style for the "Choose Category" heading */
+  .nav-side2 {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: bold;
+    color: black;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  /* Style for the button container */
+  .button-all {
+    background-color: #09a569;
+    border-radius: 5px;
+    height: 35px;
+    margin-top: 10px;
+  }
+  .button-all .dropdown-item{
+    color: white;
+  }
+  
+  .button-all :hover{
+    color: black;
+    background-color: #009f62;
+    box-shadow: 2px 5px 6px 0px rgba(0,0,0,0.2);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out;
+  }
+  /* Style the MENU dropdown*/
+  
+  /* Style the USER dropdown*/
+  .dropdown-menu2{
+    display: none;
+    top: 40px;
+    position: absolute;
+    right: 0;
+    width: 220px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  .header-button-icon .dropdown-menu2 :hover{
+    background-color: white;
+  }
+  .content .dropdown-item:hover {
+    background-color: #e9e9e9;
+    color: black;
+  }
+  /* Style the USER dropdown*/
+  
+  /* right menu icons */
+  .right-menu{
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .right-menu-icons-item{
+    margin-left: 10px;
+  }
+  .right-menu-icons-item :hover{
+    background-color: #e0e1e21f;
+    border-radius: 4px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out;
+  }
+  .right-menu-icons{
+    color: white;
+    width: 36px;
+  }
+  .header-button-icon{
+    position: relative;
+    width: 36px;
+    height: 36px;
+    color: white;
+    font-size: 16px;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fa{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+  }
+  /* The navigation bar END*/
